@@ -1,0 +1,152 @@
+Conversation opened. 1 read message.
+
+Skip to content
+Using Gmail with screen readers
+Enable desktop notifications for Gmail.
+   OK  No thanks
+Conversations
+3% of 15 GB used
+Terms · Privacy · Program Policies
+Last account activity: 1 minute ago
+Details
+!pip install -q -U streamlit langchain langchain-community langchain-google-genai beautifulsoup4 python-dotenv langchainhub
+!pip install langchain-classic
+ 
+
+from google.colab import userdata
+
+GEMINI_API = userdata.get('Gemini_API_Key')
+
+print("API Loaded Successfully")
+
+
+
+%%writefile app.py
+import os
+import streamlit as st
+import requests
+from bs4 import BeautifulSoup
+
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_classic.agents import AgentExecutor, create_react_agent
+from langchain_classic.tools import Tool
+from langchain_classic import hub
+
+# Load Gemini API key
+os.environ["GOOGLE_API_KEY"] = "AIzaSyBRUHWE2aefb67Yw_-5xqTU2lzqPTX5j50"
+
+# -----------------------------
+# TOOL: Job Scraper
+# -----------------------------
+def search_indian_jobs(query):
+
+    url = f"https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&txtKeywords={query}&txtLocation=India"
+
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    try:
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        jobs = soup.find_all("li", class_="clearfix job-bx wht-shd-bx")
+
+        results = []
+
+        for job in jobs[:5]:
+
+            company = job.find("h3", class_="joblist-comp-name")
+            details = job.find("ul", class_="top-jd-dtl clearfix")
+
+            if company and details:
+
+                results.append(
+                    f"Company: {company.text.strip()}\nDetails: {details.text.strip()}"
+                )
+
+        if results:
+            return "\n\n---\n\n".join(results)
+
+        return "No jobs found."
+
+    except Exception as e:
+
+        return f"Error scraping jobs: {str(e)}"
+
+
+tools = [
+
+    Tool(
+        name="IndianJobSearch",
+        func=search_indian_jobs,
+        description="Search live job openings in India. Input should be job title."
+    )
+
+]
+
+# -----------------------------
+# Gemini Model
+# -----------------------------
+llm = ChatGoogleGenerativeAI(
+
+    model="gemini-1.5-flash",
+    temperature=0.3
+
+)
+
+prompt = hub.pull("hwchase17/react")
+
+agent = create_react_agent(llm, tools, prompt)
+
+agent_executor = AgentExecutor(
+
+    agent=agent,
+    tools=tools,
+    verbose=True,
+    handle_parsing_errors=True
+
+)
+
+# -----------------------------
+# Streamlit UI
+# -----------------------------
+st.title("🚀 Career AI Agent")
+
+st.write("Find live job openings in India using AI.")
+
+user_input = st.text_input(
+    "Enter the job role",
+    placeholder="Example: Data Analyst"
+)
+
+if st.button("Search Jobs"):
+
+    st.write("Button clicked")
+
+    if user_input.strip() == "":
+        st.warning("Please enter a job role")
+
+    else:
+
+        with st.spinner("Searching jobs..."):
+
+            try:
+
+                response = agent_executor.invoke({"input": user_input})
+
+                st.subheader("Results")
+                st.write(response["output"])
+
+            except Exception as e:
+
+                st.error(f"Error occurred: {e}")
+
+
+
+import os
+
+os.environ["GOOGLE_API_KEY"] = "AIzaSyBRUHWE2aefb67Yw_-5xqTU2lzqPTX5j50"
+!streamlit run app.py &>/content/logs.txt &
+
+!npx localtunnel --port 8501
+AI project.txt
+Displaying AI project.txt.
