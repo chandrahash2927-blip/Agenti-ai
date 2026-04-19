@@ -1,0 +1,12 @@
+from pyngrok import ngrok
+
+# Add your token here
+ngrok.set_auth_token("Ngrok_api_key")  # e.g., "2abc...xyz"
+
+# Kill existing
+!pkill -f streamlit
+!streamlit run app.py --server.port 8501 &>/content/streamlit.log &
+
+# Create tunnel
+public_url = ngrok.connect(addr="8501", proto="http")
+print(f"🚀 Live at: {public_url}")
