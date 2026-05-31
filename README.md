@@ -24,6 +24,7 @@ Deployment: CI/CD ready structure for cloud hosting
 | **Harika**      | QA & Docs           | Tests, `README.md`, `ARCHITECTURE.md`,`settings.py`      |
 
 🔮 Future Improvements
+
 [ ] Integrate real job APIs (Naukri, Indeed, LinkedIn)
 [ ] Add LangChain/Gemini AI for personalized career advice
 [ ] User authentication (Firebase/Auth0)
@@ -35,7 +36,7 @@ Deployment: CI/CD ready structure for cloud hosting
 📝 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 🙏 Acknowledgments
-Capabl. for the project framework and mentorship
+Capable. for the project framework and mentorship
 Streamlit for the amazing open-source app framework
 Indian job market data inspired by Naukri, Glassdoor, and AmbitionBox
 
