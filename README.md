@@ -16,9 +16,13 @@ Interview Automation: Heuristic-based evaluation and feedback generation
 Full-Stack Development: Streamlit frontend + SQLite backend + modular Python architecture
 Deployment: CI/CD ready structure for cloud hosting
 👥 Team
-| Name          | Role                 | Contribution                                     |
-| ------------- | -------------------- | ------------------------------------------------ |
-| Chandrahash   | Full Stack Developer | Architecture, job engine, ATS parser, deployment |
+| Member          | Role                | Files/Modules                                            |
+| --------------- | ------------------- | -------------------------------------------------------- |
+| **Chandrahash** | Team Lead / Backend | `career_agent.py`, architecture,demo prep                |
+| **Saranya**     | AI/ML Engineer      | `resume_parser.py`, ATS scoring, LLM prompts             |
+| **Srikar**      | Full Stack          | `app.py` (Streamlit UI), `job_scraper.py`, visualization |
+| **Harika**      | QA & Docs           | Tests, `README.md`, `ARCHITECTURE.md`,`settings.py`      |
+
 🔮 Future Improvements
 [ ] Integrate real job APIs (Naukri, Indeed, LinkedIn)
 [ ] Add LangChain/Gemini AI for personalized career advice
