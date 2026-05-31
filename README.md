@@ -2,7 +2,7 @@
 🔌 API Integration Roadmap
 Currently uses mock data for demo purposes. Production upgrade path:
 | API                    | Purpose                    | Status     |
-| ---------------------- | -------------------------- | ---------- |
+
 | Naukri.com API         | Indian job listings        | 🔜 Planned |
 | Indeed API             | Global + Indian jobs       | 🔜 Planned |
 | LinkedIn Jobs API      | Professional network       | 🔜 Planned |
@@ -17,7 +17,6 @@ Full-Stack Development: Streamlit frontend + SQLite backend + modular Python arc
 Deployment: CI/CD ready structure for cloud hosting
 👥 Team
 | Member          | Role                | Files/Modules                                            |
-| --------------- | ------------------- | -------------------------------------------------------- |
 | **Chandrahash** | Team Lead / Backend | `career_agent.py`, architecture,demo prep                |
 | **Saranya**     | AI/ML Engineer      | `resume_parser.py`, ATS scoring, LLM prompts             |
 | **Srikar**      | Full Stack          | `app.py` (Streamlit UI), `job_scraper.py`, visualization |
