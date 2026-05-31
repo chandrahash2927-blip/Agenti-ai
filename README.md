@@ -2,7 +2,7 @@
 🔌 API Integration Roadmap
 Currently uses mock data for demo purposes. Production upgrade path:
 | API                    | Purpose                    | Status     |
-
+|------------------------|----------------------------|------------|
 | Naukri.com API         | Indian job listings        | 🔜 Planned |
 | Indeed API             | Global + Indian jobs       | 🔜 Planned |
 | LinkedIn Jobs API      | Professional network       | 🔜 Planned |
