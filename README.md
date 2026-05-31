@@ -26,18 +26,31 @@ Deployment: CI/CD ready structure for cloud hosting
 🔮 Future Improvements
 
 [ ] Integrate real job APIs (Naukri, Indeed, LinkedIn)
+
 [ ] Add LangChain/Gemini AI for personalized career advice
+
 [ ] User authentication (Firebase/Auth0)
+
 [ ] Email/SMS job alerts
+
 [ ] PostgreSQL migration for production scale
+
 [ ] React/Next.js frontend upgrade (Track B)
+
 [ ] Voice-based mock interviews
+
 [ ] Salary negotiation assistant
+
 📝 License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
+
 🙏 Acknowledgments
+
 Capable. for the project framework and mentorship
+
 Streamlit for the amazing open-source app framework
+
 Indian job market data inspired by Naukri, Glassdoor, and AmbitionBox
 
 
